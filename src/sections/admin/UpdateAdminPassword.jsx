@@ -1,14 +1,5 @@
 import { LoadingButton } from '@mui/lab';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Grid,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -18,33 +9,37 @@ const UpdateAdminPassword = ({ open, handleClose, id }) => {
   const { token } = useSelector((state) => state.auth);
 
   const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("")
-  const [errorMessage, setErrorMessage] = useState("")
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(token)
+    e.preventDefault();
+    console.log(token);
     setLoading(true);
     const info = {
-        old_password: oldPassword,
-        new_password: newPassword
-    }
+      old_password: oldPassword,
+      new_password: newPassword,
+    };
     axios
       .post(`${process.env.REACT_APP_API_URL}admin/admins/update_password/${id}`, info, {
         headers: headerApi(token),
       })
       .then((res) => {
         console.log(res);
-        setLoading(false)
-        setSuccessMessage("Updated Success")
+        setLoading(false);
+        setSuccessMessage('');
+        setErrorMessage('');
+        setOldPassword('');
+        setNewPassword('');
+        handleClose();
       })
       .catch((error) => {
         console.log(error);
-        setLoading(false)
-        setErrorMessage("Error please try again")
+        setLoading(false);
+        setErrorMessage('Error please try again');
       });
   };
 
@@ -86,7 +81,7 @@ const UpdateAdminPassword = ({ open, handleClose, id }) => {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Disagree</Button>
-            <LoadingButton type='submit' loading={loading} autoFocus>
+            <LoadingButton type="submit" loading={loading} autoFocus>
               Agree
             </LoadingButton>
           </DialogActions>

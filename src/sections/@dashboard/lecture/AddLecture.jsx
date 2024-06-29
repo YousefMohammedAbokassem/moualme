@@ -21,6 +21,7 @@ const AddLecture = ({ open, handleClose, setData }) => {
   const { token } = useSelector((state) => state.auth);
   const { id } = useParams();
   const fileInputRef = useRef(null);
+  const videoInputRef = useRef(null);
 
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
@@ -40,10 +41,11 @@ const AddLecture = ({ open, handleClose, setData }) => {
       formData.append('name', values.name);
       formData.append('description', values.description);
       formData.append('order', values.order);
-      formData.append('video', values.video);
+      // formData.append('video', values.video);
       formData.append('duration', values.duration);
       formData.append('chapter_id', id);
       formData.append('image', selectedFile);
+      formData.append('video', selectedVideo);
 
       for (var pair of formData.entries()) {
         console.log(pair[0] + ', ' + pair[1]);
@@ -73,6 +75,7 @@ const AddLecture = ({ open, handleClose, setData }) => {
     },
   });
   const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
   return (
     <>
@@ -126,7 +129,7 @@ const AddLecture = ({ open, handleClose, setData }) => {
                   onChange={formik.handleChange}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              {/* <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
                   label="Video"
@@ -135,7 +138,7 @@ const AddLecture = ({ open, handleClose, setData }) => {
                   value={formik.values.video}
                   onChange={formik.handleChange}
                 />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12} md={6} sx={{ position: 'relative', display: 'flex', alignItems: 'content' }}>
                 <label htmlFor="file">
                   <Button variant="contained" onClick={() => fileInputRef.current.click()}>
@@ -145,9 +148,23 @@ const AddLecture = ({ open, handleClose, setData }) => {
                 <input
                   id="file"
                   type="file"
+                  accept="images/*"
                   style={{ display: 'none' }}
                   ref={fileInputRef}
                   onChange={(e) => setSelectedFile(e.target.files[0])}
+                />
+                <label htmlFor="file">
+                  <Button variant="contained" onClick={() => videoInputRef.current.click()}>
+                    Video
+                  </Button>
+                </label>
+                <input
+                  id="file"
+                  type="file"
+                  accept="video/*"
+                  style={{ display: 'none' }}
+                  ref={videoInputRef}
+                  onChange={(e) => setSelectedVideo(e.target.files[0])}
                 />
               </Grid>
             </Grid>

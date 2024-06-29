@@ -16,7 +16,6 @@ import { useSelector } from 'react-redux';
 import { headerApi } from 'src/utils/headerApi';
 
 const UpdateAdmin = ({ open, setOpen, setData, id, handleCloseMenu, element }) => {
-
   const { token } = useSelector((state) => state.auth);
   const handleClose = () => {
     setOpen(false);
@@ -61,13 +60,13 @@ const UpdateAdmin = ({ open, setOpen, setData, id, handleCloseMenu, element }) =
   };
 
   const handleSelectFile = (e) => {
-    if(e.target.files && e.target.files[0]){
-    setSelectFile(e.target.files[0]);
-    setImageUrl(URL.createObjectURL(e.target.files[0]));
-    console.log(e.target.files[0])
-    console.log(URL.createObjectURL(e.target.files[0]))
-    console.log(element.image)
-  }
+    if (e.target.files && e.target.files[0]) {
+      setSelectFile(e.target.files[0]);
+      setImageUrl(URL.createObjectURL(e.target.files[0]));
+      console.log(e.target.files[0]);
+      console.log(URL.createObjectURL(e.target.files[0]));
+      console.log(element.image);
+    }
   };
 
   const [loading, setLoading] = useState(false);
@@ -88,7 +87,8 @@ const UpdateAdmin = ({ open, setOpen, setData, id, handleCloseMenu, element }) =
         console.log(res);
         setLoading(false);
         setOpen(false);
-        handleCloseMenu()
+        handleCloseMenu();
+        
         setData((prev) =>
           prev.map((admin) =>
             admin.id === id
@@ -97,7 +97,7 @@ const UpdateAdmin = ({ open, setOpen, setData, id, handleCloseMenu, element }) =
                   name: values.name,
                   email: values.email,
                   rule: values.rule,
-                  image: imageUrl,
+                  image: res?.data?.admin?.image,
                 }
               : admin
           )
@@ -106,7 +106,7 @@ const UpdateAdmin = ({ open, setOpen, setData, id, handleCloseMenu, element }) =
       .catch((error) => {
         console.log(error);
         setLoading(false);
-        setErrorMessage("Error")
+        setErrorMessage('Error');
       });
   };
 
@@ -118,7 +118,7 @@ const UpdateAdmin = ({ open, setOpen, setData, id, handleCloseMenu, element }) =
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{'Update Admin Info'}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{''}</DialogTitle>
         <DialogContent>
           <Grid container spacing={3} sx={{ marginTop: '20px' }}>
             <Grid item xs={12} md={6}>

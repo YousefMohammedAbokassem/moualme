@@ -16,7 +16,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { headerApi } from 'src/utils/headerApi';
 
-const AddCourses = ({ open, setOpen, setData }) => {
+        
+const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
   const { token } = useSelector((state) => state.auth);
 
   const [loading, setLoading] = useState(false);
@@ -68,7 +69,6 @@ const AddCourses = ({ open, setOpen, setData }) => {
       formData.append('has_test', values.has_test);
       formData.append('has_certificate', values.has_certificate);
       formData.append('image', selectedFile);
-      console.log(selectedFile);
       if (selectedFile) {
         setLoading(true);
         axios
@@ -79,6 +79,8 @@ const AddCourses = ({ open, setOpen, setData }) => {
             console.log(response, 'asdasdasdads');
             setSuccessMessage('Added success');
             setErrorMessage('');
+            fetchCourses();
+
             // setLoading(false);
             // setOpen(false)
             // axios.post(`${process.env.REACT_APP_API_URL}`)

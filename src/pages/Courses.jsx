@@ -89,7 +89,7 @@ const Courses = () => {
       });
   }, []);
 
-  useEffect(() => {
+  const fetchCourses = () => {
     setLoading(true);
     axios
       .get(`${process.env.REACT_APP_API_URL}admin/courses`, {
@@ -100,6 +100,7 @@ const Courses = () => {
         headers: headerApi(token),
       })
       .then((res) => {
+        console.log({ res });
         setLoading(false);
         setCourses(res.data.courses);
         setPagesCount(res.data.pagesCount);
@@ -111,6 +112,33 @@ const Courses = () => {
         }
         setLoading(false);
       });
+  };
+  const fetchCoursesProp = () => {
+    setLoading(true);
+    axios
+      .get(`${process.env.REACT_APP_API_URL}admin/courses`, {
+        params: {
+          page: page,
+          ...(selectedCategory !== '' && { category_id: selectedCategory }),
+        },
+        headers: headerApi(token),
+      })
+      .then((res) => {
+        console.log({ res });
+        setLoading(false);
+        setCourses(res.data.courses);
+        setPagesCount(res.data.pagesCount);
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response.status === 401) {
+          dispatch(logoutUser());
+        }
+        setLoading(false);
+      });
+  };
+  useEffect(() => {
+    fetchCourses();
   }, [page, token, selectedCategory]);
 
   //handle add corse to category
@@ -197,7 +225,7 @@ const Courses = () => {
           />
         </Stack>
       </Container>
-      <AddCourses open={openAdd} setOpen={setOpenAdd} setData={setCourses} />
+      <AddCourses open={openAdd} setOpen={setOpenAdd} setData={setCourses} fetchCourses={fetchCoursesProp} />
       <DeleteCourse open={openDelete} handleClose={handleClose} id={selectedDelete} setData={setCourses} />
       <UpdateCourse
         onUpdateSuccess={handleUpdateSuccess}

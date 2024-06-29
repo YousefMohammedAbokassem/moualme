@@ -16,8 +16,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { headerApi } from 'src/utils/headerApi';
 
-
-const rule = ["admin", "super"]
+const rule = ['admin', 'super'];
 
 const AddAdmin = ({ open, setOpen, setData, handleCloseMenu }) => {
   const { token } = useSelector((state) => state.auth);
@@ -28,7 +27,7 @@ const AddAdmin = ({ open, setOpen, setData, handleCloseMenu }) => {
 
   const handleClose = () => {
     setOpen(false);
-    handleCloseMenu()
+    handleCloseMenu();
     formik.resetForm();
     setErrorMessage('');
     setSuccessMessage('');
@@ -52,7 +51,7 @@ const AddAdmin = ({ open, setOpen, setData, handleCloseMenu }) => {
       email: '',
       password: '',
       rule: '',
-    },  
+    },
     onSubmit: (values) => {
       setLoading(true);
       const formData = new FormData();
@@ -63,8 +62,8 @@ const AddAdmin = ({ open, setOpen, setData, handleCloseMenu }) => {
       formData.append('file', selecteFile);
 
       for (var pair of formData.entries()) {
-        console.log(pair[0]+ ', ' + pair[1]); 
-    }
+        console.log(pair[0] + ', ' + pair[1]);
+      }
 
       axios
         .post(`${process.env.REACT_APP_API_URL}admin/admins/create`, formData, {
@@ -75,14 +74,13 @@ const AddAdmin = ({ open, setOpen, setData, handleCloseMenu }) => {
           console.log(res);
           setSuccessMessage('Added Success');
           setData((prev) => [...prev, res.data.admin]);
-          handleClose()
+          handleClose();
         })
         .catch((error) => {
           console.log(error);
-          if(error.response){
-            setErrorMessage(error.response.data.error)
-          }else{
-
+          if (error.response) {
+            setErrorMessage(error.response.data.error);
+          } else {
             setErrorMessage('Error, please try again');
           }
           setLoading(false);
@@ -117,7 +115,7 @@ const AddAdmin = ({ open, setOpen, setData, handleCloseMenu }) => {
                   fullWidth
                   label="Email"
                   name="email"
-                  type='email'
+                  type="email"
                   required
                   value={formik.values.email}
                   onChange={formik.handleChange}
@@ -145,7 +143,9 @@ const AddAdmin = ({ open, setOpen, setData, handleCloseMenu }) => {
                   onChange={formik.handleChange}
                 >
                   {rule.map((element, index) => (
-                    <MenuItem key={index} value={element}>{element}</MenuItem>
+                    <MenuItem key={index} value={element}>
+                      {element}
+                    </MenuItem>
                   ))}
                 </TextField>
               </Grid>

@@ -60,7 +60,6 @@ const ItemsComp = ({ loadingCity, city, setCity, setSelectedElement, setSelected
       })
       .then((res) => {
         setDeleteLoading(false);
-        console.log(res);
         setCity((prev) => prev.filter((el) => el.id !== selectedId));
         setAnchorEl(null);
       })
@@ -88,9 +87,11 @@ const ItemsComp = ({ loadingCity, city, setCity, setSelectedElement, setSelected
                   {loadingCity ? (
                     <SkeletonTable number={4} />
                   ) : (
-                    city.map((element, index) => (
-                      <ItemsTableRow key={index} element={element} handleOpenMenu={handleOpenMenu} />
-                    ))
+                    city
+                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      .map((element, index) => (
+                        <ItemsTableRow key={index} element={element} handleOpenMenu={handleOpenMenu} />
+                      ))
                   )}
                 </TableBody>
               </Table>

@@ -114,7 +114,7 @@ const UpdateUser = ({ element, open, handleClose, setData }) => {
         aria-describedby="alert-dialog-description"
       >
         <form onSubmit={formik.handleSubmit}>
-          <DialogTitle id="alert-dialog-title">{'Update Course'}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{'Update User'}</DialogTitle>
           <DialogContent>
             <Grid container spacing={3} sx={{ marginTop: '20px' }}>
               <Grid item xs={12} md={6}>

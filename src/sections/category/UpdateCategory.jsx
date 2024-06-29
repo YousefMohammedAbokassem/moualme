@@ -88,7 +88,7 @@ const UpdateCategory = ({ open, setData, handleClose, element, selectedId }) => 
         aria-describedby="alert-dialog-description"
       >
         <form onSubmit={formik.handleSubmit}>
-          <DialogTitle id="alert-dialog-title">{'Add Teacher'}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{'Update Category'}</DialogTitle>
           <DialogContent>
             <Grid container spacing={3} sx={{ marginTop: '20px' }}>
               <Grid item xs={12} md={12} sx={{ width: '400px' }}>
