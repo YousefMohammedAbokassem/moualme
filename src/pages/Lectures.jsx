@@ -105,11 +105,11 @@ const Lectures = () => {
             <SkeletonCopm />
           ) : (
             lectures.map((element, index) => (
-              <Card key={index} sx={{ maxWidth: 345 }}>
+              <Card key={index} sx={{ maxWidth: 400, width: 350 }}>
                 {/* <CardMedia src={`${process.env.REACT_APP_API_URL_IMAGE}/${element?.video}`}></CardMedia> */}
                 <CardMedia
                   sx={{ height: 300 }}
-                  image={`${process.env.REACT_APP_API_URL_IMAGE}/${element?.video}`}
+                  image={`${process.env.REACT_APP_API_URL_IMAGE}/${element?.image}`}
                   // title="green iguana"
                 />
 
