@@ -40,11 +40,11 @@ const navConfig = [
     path: '/dashboard/items',
     icon: icon('maps-01'),
   },
-  {
-    title: 'Pos',
-    path: '/dashboard/pos',
-    icon: icon('maps-01'),
-  },
+  // {
+  //   title: 'Pos',
+  //   path: '/dashboard/pos',
+  //   icon: icon('maps-01'),
+  // },
   {
     title: 'logout',
     path: '/login',

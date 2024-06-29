@@ -1,5 +1,5 @@
 import { LoadingButton } from '@mui/lab';
-import { Button, Card, CardActions, CardContent, Container, Stack, Typography } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia, Container, Stack, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
@@ -13,8 +13,8 @@ import { customDecrypt } from 'src/utils/hashingFunction';
 import { headerApi } from 'src/utils/headerApi';
 import { logoutUser } from 'src/store/authSlice';
 const Lectures = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
   const { token } = useSelector((state) => state.auth);
 
@@ -73,14 +73,14 @@ const Lectures = () => {
         headers: headerApi(token),
       })
       .then((res) => {
-        console.log(res)
+        console.log(res);
         setLectures(res.data.lectures);
         setLoading(false);
       })
       .catch((error) => {
         console.log(error);
-        if(error.response.status === 401){
-          dispatch(logoutUser())
+        if (error.response.status === 401) {
+          dispatch(logoutUser());
         }
         setLoading(false);
       });
@@ -106,15 +106,13 @@ const Lectures = () => {
           ) : (
             lectures.map((element, index) => (
               <Card key={index} sx={{ maxWidth: 345 }}>
-                <iframe
-                  width="350"
-                  height="315"
-                  src={`https://www.youtube.com/embed/${customDecrypt(element.video)}?si=7erLKeQtKJ0cHYn3`}
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></iframe>
+                {/* <CardMedia src={`${process.env.REACT_APP_API_URL_IMAGE}/${element?.video}`}></CardMedia> */}
+                <CardMedia
+                  sx={{ height: 300 }}
+                  image={`${process.env.REACT_APP_API_URL_IMAGE}/${element?.video}`}
+                  // title="green iguana"
+                />
+
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     {element.name}
@@ -128,9 +126,9 @@ const Lectures = () => {
                     </Typography>
                   </Stack>
                 </CardContent>
-                <CardActions sx={{justifyContent: "space-between", display: "flex"}}>
+                <CardActions sx={{ justifyContent: 'space-between', display: 'flex' }}>
                   <Stack>
-                  <Button size="small" onClick={() => navigate(`/dashboard/courses/lectures/mcq/${element.id}`)}>
+                    <Button size="small" onClick={() => navigate(`/dashboard/courses/lectures/mcq/${element.id}`)}>
                       Details
                     </Button>
                   </Stack>

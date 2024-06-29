@@ -250,7 +250,7 @@ const Chapters = () => {
         chapterId={selectedList}
       />
 
-      <Container sx={{ mt: 6 }}>
+   {/*    <Container sx={{ mt: 6 }}>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
             Qr Code
@@ -269,7 +269,7 @@ const Chapters = () => {
         selectedId={selectedId}
         setSelectedId={setSelectedId}
       />
-      <AddQr open={openAddQr} setOpen={setOpenAddQr} setData={setQrCode} />
+      <AddQr open={openAddQr} setOpen={setOpenAddQr} setData={setQrCode} /> */}
     </>
   );
 };

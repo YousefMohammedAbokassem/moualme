@@ -63,8 +63,8 @@ const AddTeacher = ({ open, setOpen, setData, handleCloseMenu }) => {
       formData.append('phone', values.phone);
       formData.append('name', values.name);
       formData.append('city_id', values.city_id);
-      formData.append('telegram_link', values.telegram);
-      formData.append('youtube_link', values.youtube);
+      formData.append('telegram_link', 'values.telegram');
+      formData.append('youtube_link', 'values.youtube');
       formData.append('specialization', values.specialization);
       formData.append('description', values.description);
       formData.append('file', selecteFile);
@@ -181,7 +181,7 @@ const AddTeacher = ({ open, setOpen, setData, handleCloseMenu }) => {
                   onChange={formik.handleChange}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+          {/*     <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
                   label="Youtube Channel Link"
@@ -200,7 +200,7 @@ const AddTeacher = ({ open, setOpen, setData, handleCloseMenu }) => {
                   value={formik.values.telegram}
                   onChange={formik.handleChange}
                 />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth

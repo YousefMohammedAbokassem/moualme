@@ -93,8 +93,8 @@ const UpdateTeacher = ({ open, setOpen, setData, handleCloseMenu, element }) => 
     formData.append('city_id', values.city_id);
     formData.append('specialization', values.specialization);
     formData.append('description', values.description);
-    formData.append('telegram_link', values.telegram_link);
-    formData.append('youtube_link', values.youtube_link);
+    formData.append('telegram_link', 'values.telegram_link');
+    formData.append('youtube_link', 'values.youtube_link');
     formData.append('file', selecteFile);
     formData.append('id', element.id);
 
@@ -202,7 +202,7 @@ const UpdateTeacher = ({ open, setOpen, setData, handleCloseMenu, element }) => 
                 onChange={handleChange}
               />
             </Grid>
-            <Grid item xs={12} md={6}>
+    {/*         <Grid item xs={12} md={6}>
               <TextField
                 fullWidth
                 label="Telegram"
@@ -221,7 +221,7 @@ const UpdateTeacher = ({ open, setOpen, setData, handleCloseMenu, element }) => 
                 value={values.youtube_link}
                 onChange={handleChange}
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} md={6} sx={{ position: 'relative' }}>
               <label htmlFor="file">
                 <Button variant="contained" onClick={handleOpenFile}>

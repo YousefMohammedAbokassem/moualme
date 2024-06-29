@@ -43,8 +43,8 @@ const TABLE_HEAD = [
   { id: 'phone', label: 'Phone', alignRight: false },
   { id: 'description', label: 'Description', alignRight: false },
   { id: 'specialization', label: 'Specialization', alignRight: false },
-  { id: 'youtube', label: 'Youtube', alignRight: false },
-  { id: 'telegram', label: 'Telegram', alignRight: false },
+  // { id: 'youtube', label: 'Youtube', alignRight: false },
+  // { id: 'telegram', label: 'Telegram', alignRight: false },
   { id: 'city', label: 'City', alignRight: false },
   { id: '' },
 ];
@@ -242,7 +242,12 @@ export default function Teacher() {
                   ) : (
                     teachers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((teacher, index) => {
                       return (
-                        <TeacherTableRow  mainPage={true} teacher={teacher} key={index} handleOpenMenu={handleOpenMenu} /> 
+                        <TeacherTableRow
+                          mainPage={true}
+                          teacher={teacher}
+                          key={index}
+                          handleOpenMenu={handleOpenMenu}
+                        />
                       );
                     })
                   )}
@@ -283,7 +288,7 @@ export default function Teacher() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={USERLIST.length}
+            count={teachers.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
@@ -322,7 +327,7 @@ export default function Teacher() {
       </Popover>
       <AddTeacher open={OpenAdd} setOpen={setOpenAdd} setData={setTeachers} handleCloseMenu={handleCloseMenu} />
       <UpdateTeacher
-      element={selectedTeacher}
+        element={selectedTeacher}
         open={openUpdate}
         setOpen={setOpenUpdate}
         setData={setTeachers}

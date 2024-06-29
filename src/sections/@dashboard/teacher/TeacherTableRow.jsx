@@ -32,16 +32,16 @@ const TeacherTableRow = ({ teacher, handleOpenMenu, mainPage }) => {
 
       <TableCell align="left">{teacher.description}</TableCell>
       <TableCell align="left">{teacher.specialization}</TableCell>
-      <TableCell align="left">
+      {/* <TableCell align="left">
         <Link target="_blank" href={teacher.youtube_link} variant="body2" onClick={(event) => event.stopPropagation()}>
           Link
         </Link>
-      </TableCell>
-      <TableCell align="left">
+      </TableCell> */}
+      {/* <TableCell align="left">
         <Link target="_blank" href={teacher.telegram_link} variant="body2" onClick={(event) => event.stopPropagation()}>
           Link
         </Link>
-      </TableCell>
+      </TableCell> */}
       <TableCell align="left">{teacher.city}</TableCell>
       <TableCell align="right">
         <IconButton size="large" color="inherit" onClick={(event) => handleOpenMenu(event, teacher, teacher.id)}>

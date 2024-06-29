@@ -119,7 +119,7 @@ const Items = () => {
       />
       {/* end city */}
 
-      <Container sx={{ mt: 6 }}>
+{/*       <Container sx={{ mt: 6 }}>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
             Topics
@@ -136,7 +136,7 @@ const Items = () => {
         selectedTopics={selectedTopics}
         setSelecedTopics={setSelecedTopics}
       />
-      <AddTopics open={addTopics} setOpen={setAddTopics} setData={setTopics} />
+      <AddTopics open={addTopics} setOpen={setAddTopics} setData={setTopics} /> */}
 
       {/* end topics */}
 

@@ -20,17 +20,27 @@ const CoursesCard = ({ element, handleDelete, handleUpdate, mainPage, handleAddC
         ></iframe>
       )}
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="body2" component="div">
+          <b>Course Name:</b>
           {element?.name}
         </Typography>
         <Typography gutterBottom variant="body2" color="text.secondary">
-          {element?.description}
+          <b>Description:</b> {element?.description}
         </Typography>
-        <Stack spacing={2}>
-          <Typography gutterBottom variant="body2" component="div">
-            Teacher Name : {element?.teacher_name}
-          </Typography>
-        </Stack>
+        {/* <Stack spacing={2}> */}
+        <Typography gutterBottom variant="body2" component="div">
+          <b>Teacher Name:</b>
+          {element?.teacher_name}
+        </Typography>
+        <Typography gutterBottom variant="body2" component="div">
+          <b>Hours: </b>
+          {element?.hours}h
+        </Typography>
+        <Typography gutterBottom variant="body2" component="div">
+          <b>Price: </b>
+          {element?.price}
+        </Typography>
+        {/* </Stack> */}
       </CardContent>
       {mainPage && (
         <CardActions sx={{ justifyContent: 'space-between  ' }}>
@@ -47,9 +57,9 @@ const CoursesCard = ({ element, handleDelete, handleUpdate, mainPage, handleAddC
             <Button size="small" onClick={() => handleUpdate(element)}>
               Update
             </Button>
-            <Button size="small" onClick={() => handleAddCourse(element)}>
+            {/* <Button size="small" onClick={() => handleAddCourse(element)}>
               Add to category
-            </Button>
+            </Button> */}
           </Stack>
         </CardActions>
       )}

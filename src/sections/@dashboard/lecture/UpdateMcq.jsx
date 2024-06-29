@@ -51,7 +51,7 @@ const UpdateMcq = ({ open, setData, handleClose, element }) => {
       .then((res) => {
         console.log(res);
         setLoading(false);
-        setSuccessMessage("Updated Success")
+        setSuccessMessage("")
         const updatedOptions = element.options.map((option, index) => ({
           ...option,
           text: values[`answer_${index + 1}`],

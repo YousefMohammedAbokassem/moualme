@@ -140,7 +140,7 @@ const AddLecture = ({ open, handleClose, setData }) => {
                 />
               </Grid> */}
               <Grid item xs={12} md={6} sx={{ position: 'relative', display: 'flex', alignItems: 'content' }}>
-                <label htmlFor="file">
+                <label htmlFor="file" style={{ margin: '0 10px 0 0' }}>
                   <Button variant="contained" onClick={() => fileInputRef.current.click()}>
                     Image
                   </Button>
@@ -148,7 +148,7 @@ const AddLecture = ({ open, handleClose, setData }) => {
                 <input
                   id="file"
                   type="file"
-                  accept="images/*"
+                  accept="image/*"
                   style={{ display: 'none' }}
                   ref={fileInputRef}
                   onChange={(e) => setSelectedFile(e.target.files[0])}

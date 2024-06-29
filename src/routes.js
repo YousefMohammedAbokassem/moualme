@@ -38,7 +38,7 @@ export default function Router() {
         { path: 'user', element: <User /> },
         { path: 'teacher', element: <Teacher /> },
         { path: 'teacher/details/:id', element: <TeacherDetails /> },
-        { path: 'map', element: <Map /> },
+        // { path: 'map', element: <Map /> },
         { path: 'courses', element: <Courses /> },
         { path: 'category', element: <Category /> },
         { path: 'courses/chapter/:id', element: <Chapters /> },
@@ -46,7 +46,7 @@ export default function Router() {
         { path: 'courses/lectures/mcq/:id', element: <Mcq /> },
         { path: 'admin', element: <Admin /> },
         { path: 'items', element: <Items /> },
-        { path: 'pos', element: <Pos /> },
+        // { path: 'pos', element: <Pos /> },
       ],
     },
     {
