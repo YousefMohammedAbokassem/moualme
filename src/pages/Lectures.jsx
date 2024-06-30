@@ -4,7 +4,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Iconify from 'src/components/iconify';
 import SkeletonCopm from 'src/components/skeleton-comp';
 import AddLecture from 'src/sections/@dashboard/lecture/AddLecture';
@@ -107,11 +107,13 @@ const Lectures = () => {
             lectures.map((element, index) => (
               <Card key={index} sx={{ maxWidth: 400, width: 350 }}>
                 {/* <CardMedia src={`${process.env.REACT_APP_API_URL_IMAGE}/${element?.video}`}></CardMedia> */}
-                <CardMedia
-                  sx={{ height: 300 }}
-                  image={`${process.env.REACT_APP_API_URL_IMAGE}/${element?.image}`}
-                  // title="green iguana"
-                />
+                <a href={`${process.env.REACT_APP_API_URL_IMAGE}/${element.video}`} target="_blank" rel="noreferrer">
+                  <CardMedia
+                    sx={{ height: 300 }}
+                    image={`${process.env.REACT_APP_API_URL_IMAGE}/${element?.image}`}
+                    // title="green iguana"
+                  />
+                </a>
 
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">

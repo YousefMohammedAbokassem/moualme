@@ -19,11 +19,13 @@ const CoursesCard = ({ element, handleDelete, handleUpdate, mainPage, handleAddC
             allowFullScreen
           ></iframe>
         )} */}
-      <CardMedia
-        sx={{ height: 140 }}
-        image={`${process.env.REACT_APP_API_URL_IMAGE}/${element.image}`}
-        title={element.name}
-      />
+      <a href={`${process.env.REACT_APP_API_URL_IMAGE}/${element.introduction_video}`} target="_blank" rel="noreferrer">
+        <CardMedia
+          sx={{ height: 140 }}
+          image={`${process.env.REACT_APP_API_URL_IMAGE}/${element.image}`}
+          title={element.name}
+        />
+      </a>
       <CardContent>
         <Typography gutterBottom variant="body2" component="div">
           <b>Course Name:</b>
