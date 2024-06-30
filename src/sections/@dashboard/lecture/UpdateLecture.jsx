@@ -37,8 +37,12 @@ const UpdateLecture = ({ open, setData, handleClose, element, selectedId }) => {
       formData.append('duration', values.duration);
       formData.append('chapter_id', id);
       formData.append('id', selectedId);
-      formData.append('image', selectedFile);
-      formData.append('video', selectedVideo);
+      if (selectedFile) {
+        formData.append('image', selectedFile);
+      }
+      if (selectedVideo) {
+        formData.append('video', selectedVideo);
+      }
       axios
         .post(`${process.env.REACT_APP_API_URL}admin/courses/lectures/update`, formData, {
           headers: headerApi(token),
@@ -46,9 +50,9 @@ const UpdateLecture = ({ open, setData, handleClose, element, selectedId }) => {
         .then((res) => {
           // setSuccessMessage('Updated success');
           setErrorMessage('');
-          console.log(res);
           setLoading(false);
           handleClose();
+
           setData((prev) =>
             prev.map((admin) =>
               admin.id === element.id
@@ -58,7 +62,8 @@ const UpdateLecture = ({ open, setData, handleClose, element, selectedId }) => {
                     description: values.description,
                     order: values.order,
                     // video: values.video,
-                    image: res?.data?.lectures?.image,
+                    image: res?.data?.lecture?.image,
+                    video: res?.data?.lecture?.video,
                     duration: values.duration,
                   }
                 : admin

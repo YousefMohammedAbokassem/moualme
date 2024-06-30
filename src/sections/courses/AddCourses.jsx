@@ -78,7 +78,7 @@ const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
             console.log(response, 'asdasdasdads');
             setSuccessMessage('Added success');
             setErrorMessage('');
-            fetchCourses();
+            // fetchCourses();
 
             // setLoading(false);
             // setOpen(false)
@@ -103,7 +103,8 @@ const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
                 console.log(res);
                 setLoading(false);
                 setOpen(false);
-                setData((prev) => [...prev, response.data.course]);
+                // setData((prev) => [...prev, response.data.course]);
+                fetchCourses();
               })
               .catch((error) => {
                 console.log(error);
