@@ -16,7 +16,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { headerApi } from 'src/utils/headerApi';
 
-        
 const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
   const { token } = useSelector((state) => state.auth);
 
@@ -47,7 +46,6 @@ const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
     initialValues: {
       name: '',
       description: '',
-      introduction_video: '',
       hours: '',
       lectures_count: '',
       chapters_count: '',
@@ -60,7 +58,7 @@ const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
       const formData = new FormData();
       formData.append('name', values.name);
       formData.append('description', values.description);
-      formData.append('introduction_video', values.introduction_video);
+      // formData.append('introduction_video', values.introduction_video);
       formData.append('hours', values.hours);
       formData.append('lectures_count', values.lectures_count);
       formData.append('chapters_count', values.chapters_count);
@@ -69,6 +67,7 @@ const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
       formData.append('has_test', values.has_test);
       formData.append('has_certificate', values.has_certificate);
       formData.append('image', selectedFile);
+      formData.append('introduction_video', selectedVideo);
       if (selectedFile) {
         setLoading(true);
         axios
@@ -127,6 +126,8 @@ const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
   // handle image
   const fileInputRef = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
+  const videoInputRef = useRef(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(() => {
     axios
@@ -190,16 +191,6 @@ const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
                   name="description"
                   required
                   value={formik.values.description}
-                  onChange={formik.handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  label="Introduction Video"
-                  name="introduction_video"
-                  required
-                  value={formik.values.introduction_video}
                   onChange={formik.handleChange}
                 />
               </Grid>
@@ -309,8 +300,8 @@ const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
                   ))}
                 </TextField>
               </Grid>
-              <Grid item xs={12} md={6} sx={{ position: 'relative' }}>
-                <label htmlFor="file">
+              <Grid item xs={12} md={6} sx={{ position: 'relative', display: 'flex', alignItems: 'content' }}>
+                <label htmlFor="file" style={{ margin: '0 10px 0 0' }}>
                   <Button variant="contained" onClick={() => fileInputRef.current.click()}>
                     Image
                   </Button>
@@ -318,9 +309,23 @@ const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
                 <input
                   id="file"
                   type="file"
+                  accept="image/*"
                   style={{ display: 'none' }}
                   ref={fileInputRef}
                   onChange={(e) => setSelectedFile(e.target.files[0])}
+                />
+                <label htmlFor="file">
+                  <Button variant="contained" onClick={() => videoInputRef.current.click()}>
+                    Video
+                  </Button>
+                </label>
+                <input
+                  id="file"
+                  type="file"
+                  accept="video/*"
+                  style={{ display: 'none' }}
+                  ref={videoInputRef}
+                  onChange={(e) => setSelectedVideo(e.target.files[0])}
                 />
               </Grid>
             </Grid>

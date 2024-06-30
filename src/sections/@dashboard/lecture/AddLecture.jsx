@@ -22,6 +22,7 @@ const AddLecture = ({ open, handleClose, setData }) => {
   const { id } = useParams();
   const fileInputRef = useRef(null);
   const videoInputRef = useRef(null);
+  const pdfInputRef = useRef(null);
 
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
@@ -44,8 +45,12 @@ const AddLecture = ({ open, handleClose, setData }) => {
       // formData.append('video', values.video);
       formData.append('duration', values.duration);
       formData.append('chapter_id', id);
+      console.log(selectedFile)
       formData.append('image', selectedFile);
+      console.log(selectedVideo)
       formData.append('video', selectedVideo);
+      console.log(selectedPdf);
+      formData.append('file', selectedPdf);
 
       for (var pair of formData.entries()) {
         console.log(pair[0] + ', ' + pair[1]);
@@ -76,6 +81,7 @@ const AddLecture = ({ open, handleClose, setData }) => {
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedPdf, setSelectedPdf] = useState(null);
 
   return (
     <>
@@ -165,6 +171,19 @@ const AddLecture = ({ open, handleClose, setData }) => {
                   style={{ display: 'none' }}
                   ref={videoInputRef}
                   onChange={(e) => setSelectedVideo(e.target.files[0])}
+                />
+                <label htmlFor="file">
+                  <Button variant="contained" onClick={() => pdfInputRef.current.click()}>
+                    Pdf
+                  </Button>
+                </label>
+                <input
+                  id="file"
+                  type="file"
+                  // accept=""
+                  style={{ display: 'none' }}
+                  ref={pdfInputRef}
+                  onChange={(e) => setSelectedPdf(e.target.files[0])}
                 />
               </Grid>
             </Grid>
