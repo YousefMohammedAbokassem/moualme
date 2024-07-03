@@ -45,9 +45,9 @@ const AddLecture = ({ open, handleClose, setData }) => {
       // formData.append('video', values.video);
       formData.append('duration', values.duration);
       formData.append('chapter_id', id);
-      console.log(selectedFile)
+      console.log(selectedFile);
       formData.append('image', selectedFile);
-      console.log(selectedVideo)
+      console.log(selectedVideo);
       formData.append('video', selectedVideo);
       console.log(selectedPdf);
       formData.append('file', selectedPdf);
@@ -159,7 +159,7 @@ const AddLecture = ({ open, handleClose, setData }) => {
                   ref={fileInputRef}
                   onChange={(e) => setSelectedFile(e.target.files[0])}
                 />
-                <label htmlFor="file">
+                <label htmlFor="file" style={{ margin: '0 10px 0 0' }}>
                   <Button variant="contained" onClick={() => videoInputRef.current.click()}>
                     Video
                   </Button>

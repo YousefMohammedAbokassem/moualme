@@ -17,8 +17,12 @@ const UpdateLecture = ({ open, setData, handleClose, element, selectedId }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedPdf, setSelectedPdf] = useState(null);
+
   const fileInputRef = useRef(null);
   const videoInputRef = useRef(null);
+  const pdfInputRef = useRef(null);
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -43,6 +47,10 @@ const UpdateLecture = ({ open, setData, handleClose, element, selectedId }) => {
       if (selectedVideo) {
         formData.append('video', selectedVideo);
       }
+      if (selectedPdf) {
+        formData.append('file', selectedPdf);
+      }
+
       axios
         .post(`${process.env.REACT_APP_API_URL}admin/courses/lectures/update`, formData, {
           headers: headerApi(token),
@@ -161,7 +169,7 @@ const UpdateLecture = ({ open, setData, handleClose, element, selectedId }) => {
                   ref={fileInputRef}
                   onChange={(e) => setSelectedFile(e.target.files[0])}
                 />
-                <label htmlFor="file">
+                <label htmlFor="file" style={{ margin: '0 10px 0 0' }}>
                   <Button variant="contained" onClick={() => videoInputRef.current.click()}>
                     Video
                   </Button>
@@ -173,6 +181,19 @@ const UpdateLecture = ({ open, setData, handleClose, element, selectedId }) => {
                   style={{ display: 'none' }}
                   ref={videoInputRef}
                   onChange={(e) => setSelectedVideo(e.target.files[0])}
+                />
+                <label htmlFor="file">
+                  <Button variant="contained" onClick={() => pdfInputRef.current.click()}>
+                    Pdf
+                  </Button>
+                </label>
+                <input
+                  id="file"
+                  type="file"
+                  // accept=""
+                  style={{ display: 'none' }}
+                  ref={pdfInputRef}
+                  onChange={(e) => setSelectedPdf(e.target.files[0])}
                 />
               </Grid>
             </Grid>

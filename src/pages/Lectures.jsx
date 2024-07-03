@@ -146,7 +146,7 @@ const Lectures = () => {
               </Card>
             ))
           )}
-        </div>
+        </div>  
       </Container>
       <AddLecture open={openAdd} handleClose={handleClose} setData={setLectures} />
       <UpdateLecture

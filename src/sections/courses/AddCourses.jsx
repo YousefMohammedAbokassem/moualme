@@ -78,6 +78,7 @@ const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
             console.log(response, 'asdasdasdads');
             setSuccessMessage('Added success');
             setErrorMessage('');
+
             // fetchCourses();
 
             // setLoading(false);
@@ -88,9 +89,7 @@ const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
             //   categoryId: selectedCategory,
             //   `coursesIds[${0}]`: res.data.course.id,
             // })
-
             const newFormData = new FormData();
-
             newFormData.append('categoryId', selectedCategory);
             newFormData.append(`coursesIds[0]`, response.data.course.id);
             axios
@@ -100,7 +99,6 @@ const AddCourses = ({ open, setOpen, setData, fetchCourses }) => {
                 },
               })
               .then((res) => {
-                console.log(res);
                 setLoading(false);
                 setOpen(false);
                 // setData((prev) => [...prev, response.data.course]);

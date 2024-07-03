@@ -22,7 +22,7 @@ const CoursesCard = ({ element, handleDelete, handleUpdate, mainPage, handleAddC
       <a href={`${process.env.REACT_APP_API_URL_IMAGE}/${element.introduction_video}`} target="_blank" rel="noreferrer">
         <CardMedia
           sx={{ height: 140 }}
-          image={`${process.env.REACT_APP_API_URL_IMAGE}/${element.image}`}
+          image={`${process.env.REACT_APP_API_URL_IMAwGE}/${element.image}`}
           title={element.name}
         />
       </a>
