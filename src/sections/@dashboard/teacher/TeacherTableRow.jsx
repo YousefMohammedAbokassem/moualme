@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Iconify from 'src/components/iconify';
 
 const TeacherTableRow = ({ teacher, handleOpenMenu, mainPage }) => {
+  console.log(teacher);
   const handleNavigate = (id) => {
     if (mainPage) {
       navigate(`/dashboard/teacher/details/${id}`);

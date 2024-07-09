@@ -21,7 +21,7 @@ const UpdateUser = ({ element, open, handleClose, setData }) => {
 
   console.log(element);
 
-  const fileInputRef = useRef(null)
+  const fileInputRef = useRef(null);
 
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -46,24 +46,24 @@ const UpdateUser = ({ element, open, handleClose, setData }) => {
           headers: headerApi(token),
         })
         .then((res) => {
-            console.log(res)
+          console.log(res.data);
           setLoading(false);
           setSuccessMessage('Updated Successfuly');
           setData((prev) =>
-          prev.map((admin) =>
-            admin.id === element.id
-              ? {
-                  ...admin,
-                  name: values.name,
-                  email: values.email,
-                  birth_date: values.birth_date,
-                  city_id: values.city_id,
-                }
-              : admin
-          )
-        );
-          handleClose()
-
+            prev.map((admin) =>
+              admin.id === element.id
+                ? {
+                    ...admin,
+                    name: values.name,
+                    email: values.email,
+                    birth_date: values.birth_date,
+                    city_id: values.city_id,
+                    image: `${res.data.ruser.image}`,
+                  }
+                : admin
+            )
+          );
+          handleClose();
         })
         .catch((error) => {
           console.log(error);

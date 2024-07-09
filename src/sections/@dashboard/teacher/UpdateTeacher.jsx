@@ -107,7 +107,6 @@ const UpdateTeacher = ({ open, setOpen, setData, handleCloseMenu, element }) => 
         headers: headerApi(token),
       })
       .then((res) => {
-        console.log(res);
         setLoading(false);
         setOpen(false);
         handleCloseMenu();
@@ -119,6 +118,7 @@ const UpdateTeacher = ({ open, setOpen, setData, handleCloseMenu, element }) => 
                   phone: values.phone,
                   name: values.name,
                   city_id: values.city_id,
+                  city: res?.data?.teacher.city,
                   specialization: values.specialization,
                   description: values.description,
                   telegram_link: values.telegram_link,
@@ -202,7 +202,7 @@ const UpdateTeacher = ({ open, setOpen, setData, handleCloseMenu, element }) => 
                 onChange={handleChange}
               />
             </Grid>
-    {/*         <Grid item xs={12} md={6}>
+            {/*         <Grid item xs={12} md={6}>
               <TextField
                 fullWidth
                 label="Telegram"

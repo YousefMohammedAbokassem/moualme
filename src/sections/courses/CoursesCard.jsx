@@ -5,7 +5,7 @@ import { customDecrypt } from 'src/utils/hashingFunction';
 
 const CoursesCard = ({ element, handleDelete, handleUpdate, mainPage, handleAddCourse }) => {
   const navigate = useNavigate();
-
+  console.log(element.image);
   return (
     <Card sx={{ width: '350px' }}>
       {/* {element?.introduction_video === undefined ? null : (
@@ -19,10 +19,14 @@ const CoursesCard = ({ element, handleDelete, handleUpdate, mainPage, handleAddC
             allowFullScreen
           ></iframe>
         )} */}
-      <a href={`${process.env.REACT_APP_API_URL_IMAGE}/${element.introduction_video}`} target="_blank" rel="noreferrer">
+      <a
+        href={`${process.env.REACT_APP_API_URL_IMAGE}/${element?.introduction_video}`}
+        target="_blank"
+        rel="noreferrer"
+      >
         <CardMedia
           sx={{ height: 140 }}
-          image={`${process.env.REACT_APP_API_URL_IMAwGE}/${element.image}`}
+          image={`${process.env.REACT_APP_API_URL_IMAGE}/${element?.image}`}
           title={element.name}
         />
       </a>
